@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://dsprnpt7clqat"]
+
+[ext_resource type="Script" path="res://scripts/MovementController.gd" id="1_jnb68"]
+[ext_resource type="Texture2D" uid="uid://bpoy352wnrvr6" path="res://visuals/Arm.png" id="2_6lspp"]
+[ext_resource type="Script" path="res://scripts/Swinger.gd" id="2_wn2x0"]
+[ext_resource type="Script" path="res://scripts/CameraManager.gd" id="3_td1p7"]
+[ext_resource type="Shader" path="res://shaders/ViewModel.gdshader" id="3_uneka"]
+[ext_resource type="PackedScene" uid="uid://cf5puvbpbdxey" path="res://prefabs/HUD.tscn" id="6_wb7sy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f0ipy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lgs5i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xn3x"]
+render_priority = 0
+shader = ExtResource("3_uneka")
+shader_parameter/_texture = ExtResource("2_6lspp")
+
+[sub_resource type="Animation" id="Animation_i8nkp"]
+resource_name = "Idle"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Neck/Arms Holder/Right Holder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.2, -0.22044, 0.532947)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck/Arms Holder/Left Holder")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.2, -0.22044, 0.532947)
+
+[sub_resource type="Animation" id="Animation_4lniu"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Neck/Arms Holder/Right Holder")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.2, -0.22, 1.033, 0.5, 1, 0.2, -0.22, 0.533)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck/Arms Holder/Left Holder")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.2, -0.22044, 0.532947, 0.5, 1, -0.2, -0.22, 1.033)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkn7j"]
+_data = {
+"Idle": SubResource("Animation_i8nkp"),
+"run": SubResource("Animation_4lniu")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_jnb68")
+walking_speed = 0.5
+running_speed = 1.0
+acceleration = 0.1
+deceleration = 1.0
+stamina_drain = 5
+
+[node name="Right Arm" type="Node" parent="." node_paths=PackedStringArray("_holder")]
+script = ExtResource("2_wn2x0")
+_holder = NodePath("../Neck/Arms Holder/Right Holder")
+_sway = 0.1
+_rotation_amount = 0.01
+_clamp_amount = 0.1
+swing_frequency = 2.0
+
+[node name="Left Arm" type="Node" parent="." node_paths=PackedStringArray("_holder")]
+script = ExtResource("2_wn2x0")
+_holder = NodePath("../Neck/Arms Holder/Left Holder")
+_sway = 0.1
+_rotation_amount = 0.02
+_clamp_amount = 0.1
+swing_frequency = -2.0
+
+[node name="Camera manager" type="Node" parent="."]
+script = ExtResource("3_td1p7")
+MOUSE_SENSITIVITY = 0.2
+do_bob = true
+bob_amount = 3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_f0ipy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_lgs5i")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.192166)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+near = 0.001
+
+[node name="Arms Holder" type="Node3D" parent="Neck"]
+transform = Transform3D(0.517, 0, 0, 0, 0.517, 0, 0, 0, 1, 0, -0.13, 0.003)
+
+[node name="Right Holder" type="Node3D" parent="Neck/Arms Holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.22044, 0.532947)
+
+[node name="Right Arm Test" type="Sprite3D" parent="Neck/Arms Holder/Right Holder"]
+transform = Transform3D(0.0296059, 0.00457143, -0.42283, 0, 0.0242457, 0.297084, 0.01793, -0.00754833, 0.698175, 0.604111, -0.486026, -1.02265)
+sorting_offset = 2.0
+material_override = SubResource("ShaderMaterial_5xn3x")
+texture = ExtResource("2_6lspp")
+
+[node name="Left Holder" type="Node3D" parent="Neck/Arms Holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.22044, 0.532947)
+
+[node name="Left Arm" type="Sprite3D" parent="Neck/Arms Holder/Left Holder"]
+transform = Transform3D(-0.0289622, -0.00483208, -0.446939, 0, 0.0242457, -0.297084, 0.0189523, -0.00738419, -0.682994, -0.604829, -0.485591, -1.02265)
+sorting_offset = 2.0
+material_override = SubResource("ShaderMaterial_5xn3x")
+texture = ExtResource("2_6lspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hkn7j")
+}
+autoplay = "Idle"
+speed_scale = 2.0
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_wb7sy")]

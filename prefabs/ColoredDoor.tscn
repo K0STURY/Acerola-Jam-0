@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://kyai603a2o1r"]
+
+[ext_resource type="Script" path="res://scripts/ColoredDoor.gd" id="1_ct2ei"]
+[ext_resource type="Shader" path="res://shaders/ColoredDoor.gdshader" id="2_psyxt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uss6"]
+render_priority = 0
+shader = ExtResource("2_psyxt")
+shader_parameter/tint = Color(0, 1, 0, 1)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qia7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trpbv"]
+size = Vector3(1, 1.01147, 1)
+
+[node name="ColoredDoor" type="StaticBody3D"]
+script = ExtResource("1_ct2ei")
+
+[node name="Door Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("ShaderMaterial_6uss6")
+mesh = SubResource("BoxMesh_4qia7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.493774, 0)
+shape = SubResource("BoxShape3D_trpbv")

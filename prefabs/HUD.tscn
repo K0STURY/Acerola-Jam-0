@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf5puvbpbdxey"]
+
+[ext_resource type="Texture2D" uid="uid://uyqucl0ssf3t" path="res://visuals/body-sharp-svgrepo-com(1).svg" id="1_dy2nn"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_uhrn2"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_uhrn2")
+
+[node name="State Visual" type="TextureRect" parent="."]
+modulate = Color(0.431373, 0.431373, 0.431373, 1)
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 168.0
+offset_bottom = 168.0
+scale = Vector2(0.52, 0.52)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_dy2nn")
+expand_mode = 1

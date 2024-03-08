@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6j47tyyq3ej6"]
+
+[ext_resource type="Script" path="res://scripts/ColorChanger.gd" id="1_00rn8"]
+[ext_resource type="Texture2D" uid="uid://dc5devi6kg7d5" path="res://icon.svg" id="2_atwro"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qy8f5"]
+size = Vector3(1.76587, 1.72559, 1.72559)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y631f"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8qicq"]
+
+[node name="Color Changer" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_00rn8")
+color = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862793, 0)
+shape = SubResource("BoxShape3D_qy8f5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.899982, 0)
+material_override = SubResource("StandardMaterial3D_y631f")
+mesh = SubResource("SphereMesh_8qicq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, -5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0.001, 0)
+texture = ExtResource("2_atwro")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

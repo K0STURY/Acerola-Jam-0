@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://gleevnf21uc7"]
+
+[ext_resource type="Shader" path="res://shaders/LanternClipping.gdshader" id="1_mt45v"]
+[ext_resource type="Texture2D" uid="uid://d2fug35rsdvmk" path="res://visuals/Gridbox.png" id="2_g6e3c"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mt45v")
+shader_parameter/tint = Color(0.27451, 0.188235, 0.203922, 1)
+shader_parameter/_texture = ExtResource("2_g6e3c")
