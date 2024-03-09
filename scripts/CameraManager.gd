@@ -36,7 +36,6 @@ func _input(event : InputEvent) -> void:
 
 func _fov_manager(desired_fov : float) -> void:
 	camera.fov = lerp(camera.fov, desired_fov, .1)
-	print(camera.fov)
 	pass
 
 func _HandleBob(delta : float):

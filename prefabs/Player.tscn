@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsprnpt7clqat"]
+[gd_scene load_steps=10 format=3 uid="uid://dsprnpt7clqat"]
 
 [ext_resource type="Script" path="res://scripts/MovementController.gd" id="1_jnb68"]
 [ext_resource type="Texture2D" uid="uid://bpoy352wnrvr6" path="res://visuals/Arm.png" id="2_6lspp"]
@@ -15,47 +15,6 @@
 render_priority = 0
 shader = ExtResource("3_uneka")
 shader_parameter/_texture = ExtResource("2_6lspp")
-
-[sub_resource type="Animation" id="Animation_i8nkp"]
-resource_name = "Idle"
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Neck/Arms Holder/Right Holder")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.2, -0.22044, 0.532947)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Neck/Arms Holder/Left Holder")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.2, -0.22044, 0.532947)
-
-[sub_resource type="Animation" id="Animation_4lniu"]
-resource_name = "run"
-loop_mode = 1
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Neck/Arms Holder/Right Holder")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.2, -0.22, 1.033, 0.5, 1, 0.2, -0.22, 0.533)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Neck/Arms Holder/Left Holder")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.2, -0.22044, 0.532947, 0.5, 1, -0.2, -0.22, 1.033)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkn7j"]
-_data = {
-"Idle": SubResource("Animation_i8nkp"),
-"run": SubResource("Animation_4lniu")
-}
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -123,12 +82,5 @@ transform = Transform3D(-0.0289622, -0.00483208, -0.446939, 0, 0.0242457, -0.297
 sorting_offset = 2.0
 material_override = SubResource("ShaderMaterial_5xn3x")
 texture = ExtResource("2_6lspp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_hkn7j")
-}
-autoplay = "Idle"
-speed_scale = 2.0
 
 [node name="CanvasLayer" parent="." instance=ExtResource("6_wb7sy")]

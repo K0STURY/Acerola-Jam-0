@@ -4,13 +4,23 @@ extends StaticBody3D
 @export var color : GameManager.STATES
 @onready var mesh := %"Door Mesh"
 
+var scale_amount : float
+var original_scale : Vector3
+
+var jelly_freq : float = 5
+var jelly_amp : float = .01
+
 func _ready() -> void:
 	mesh.material_override.set_shader_parameter("alpha", 1)
+	original_scale = mesh.scale
 	_mat_color_update()
 
 func _process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		_fade_door()
+		_jelly_wall()
+	else:
+		_mat_color_update()
 
 func _mat_color_update() -> void:
 	if color == GameManager.STATES.RED:
@@ -34,4 +44,10 @@ func _fade_door() -> void:
 	else:
 		$CollisionShape3D.disabled = false
 		mesh.material_override.set_shader_parameter("alpha", 1)
+	pass
+
+func _jelly_wall() -> void:
+	var random_scale = sin(Time.get_ticks_msec() * jelly_freq) * jelly_amp
+	var new_scale = Vector3(random_scale, random_scale, random_scale)
+	mesh.scale = lerp(mesh.scale, mesh.scale + new_scale, 1)
 	pass

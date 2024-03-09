@@ -9,18 +9,11 @@ extends Node
 
 @export var swing_frequency : float = 3
 
-@onready var animation_player : AnimationPlayer = $"../AnimationPlayer"
-
 var mouse_input : Vector2
 var initial_pos : Vector3
 
-var max_push : Vector3
-var max_pull : Vector3
-
 func _ready() -> void:
 	initial_pos = _holder.position
-	max_push += initial_pos / 2
-	max_pull -= initial_pos / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

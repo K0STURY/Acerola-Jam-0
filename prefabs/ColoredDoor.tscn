@@ -4,9 +4,10 @@
 [ext_resource type="Shader" path="res://shaders/ColoredDoor.gdshader" id="2_psyxt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6uss6"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_psyxt")
-shader_parameter/tint = Color(0, 1, 0, 1)
+shader_parameter/tint = Color(0, 0, 1, 1)
 shader_parameter/alpha = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_4qia7"]

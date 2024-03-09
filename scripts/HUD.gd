@@ -1,9 +1,11 @@
 extends CanvasLayer
 
 @onready var _state_visual := $"State Visual"
+@onready var _progress_bar := $ProgressBar
 
 func _process(delta: float) -> void:
 	_state_manager()
+	_progress_bar.value = $"..".current_stamina
 	pass
 
 func _state_manager() -> void:

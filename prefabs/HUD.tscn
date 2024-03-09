@@ -8,12 +8,20 @@ script = ExtResource("1_uhrn2")
 
 [node name="State Visual" type="TextureRect" parent="."]
 modulate = Color(0.431373, 0.431373, 0.431373, 1)
-offset_left = 34.0
-offset_top = 34.0
-offset_right = 168.0
-offset_bottom = 168.0
+offset_left = 84.0
+offset_top = 58.0
+offset_right = 218.0
+offset_bottom = 192.0
 scale = Vector2(0.52, 0.52)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_dy2nn")
 expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 39.0
+offset_top = 146.0
+offset_right = 213.45
+offset_bottom = 173.0
+size_flags_horizontal = 4
+value = 100.0

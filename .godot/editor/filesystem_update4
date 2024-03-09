@@ -23,3 +23,9 @@ res://scripts/ColorChanger.gd
 res://prefabs/ColoredDoor.tscn
 res://scripts/ColoredDoor.gd
 res://shaders/ColoredDoor.gdshader
+res://scripts/HUD.gd
+res://prefabs/OpenableDoor.tscn
+res://scripts/OpenableDoor.gd
+res://prefabs/DoorSwitch.tscn
+res://scripts/DoorSwitch.gd
+res://materials/Lantern.tres

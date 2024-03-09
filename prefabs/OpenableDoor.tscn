@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs0nykrmkjaej"]
+
+[ext_resource type="Script" path="res://scripts/OpenableDoor.gd" id="1_51cb2"]
+[ext_resource type="Material" uid="uid://bbuabv75tf1dr" path="res://materials/Lantern.tres" id="2_ity5n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qia7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trpbv"]
+size = Vector3(1, 1.01147, 1)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_51cb2")
+
+[node name="Door Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("2_ity5n")
+mesh = SubResource("BoxMesh_4qia7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.493774, 0)
+shape = SubResource("BoxShape3D_trpbv")
