@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsprnpt7clqat"]
+[gd_scene load_steps=19 format=3 uid="uid://dsprnpt7clqat"]
 
 [ext_resource type="Script" path="res://scripts/MovementController.gd" id="1_jnb68"]
 [ext_resource type="Texture2D" uid="uid://bpoy352wnrvr6" path="res://visuals/Arm.png" id="2_6lspp"]
 [ext_resource type="Script" path="res://scripts/Swinger.gd" id="2_wn2x0"]
 [ext_resource type="Script" path="res://scripts/CameraManager.gd" id="3_td1p7"]
 [ext_resource type="Shader" path="res://shaders/ViewModel.gdshader" id="3_uneka"]
+[ext_resource type="Texture2D" uid="uid://cydxs77stccp0" path="res://visuals/Arm.svg" id="6_2xm0y"]
 [ext_resource type="PackedScene" uid="uid://cf5puvbpbdxey" path="res://prefabs/HUD.tscn" id="6_wb7sy"]
+[ext_resource type="PackedScene" uid="uid://ngfkpakkha1f" path="res://prefabs/walk_particles.tscn" id="7_u0gy3"]
+[ext_resource type="AudioStream" uid="uid://bovdtngd7srx4" path="res://sound/footstep_sound.mp3" id="9_r5rtx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f0ipy"]
 
@@ -14,9 +17,58 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5xn3x"]
 render_priority = 0
 shader = ExtResource("3_uneka")
+shader_parameter/tint = Color(1, 1, 1, 1)
 shader_parameter/_texture = ExtResource("2_6lspp")
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="Curve" id="Curve_4rphu"]
+_data = [Vector2(0, 1), 0.0, -0.045, 0, 0, Vector2(1, 0), -2.365, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j10x8"]
+curve = SubResource("Curve_4rphu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ut3ar"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.15, 0, 0)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -1, 0)
+scale_min = 0.0
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_j10x8")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 5.0
+turbulence_noise_speed = Vector3(0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_36ujj"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_3468o"]
+resource_name = "moving"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FootstepStreamer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8v57"]
+_data = {
+"idle": SubResource("Animation_36ujj"),
+"moving": SubResource("Animation_3468o")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("walk_particles")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_jnb68")
 walking_speed = 0.5
@@ -24,6 +76,7 @@ running_speed = 1.0
 acceleration = 0.1
 deceleration = 1.0
 stamina_drain = 5
+walk_particles = NodePath("WalkParticles")
 
 [node name="Right Arm" type="Node" parent="." node_paths=PackedStringArray("_holder")]
 script = ExtResource("2_wn2x0")
@@ -81,6 +134,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.22044, 0.532947)
 transform = Transform3D(-0.0289622, -0.00483208, -0.446939, 0, 0.0242457, -0.297084, 0.0189523, -0.00738419, -0.682994, -0.604829, -0.485591, -1.02265)
 sorting_offset = 2.0
 material_override = SubResource("ShaderMaterial_5xn3x")
-texture = ExtResource("2_6lspp")
+texture = ExtResource("6_2xm0y")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("6_wb7sy")]
+
+[node name="WalkParticles" parent="." instance=ExtResource("7_u0gy3")]
+transform = Transform3D(3.09096, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0852688, -0.104076)
+emitting = true
+visibility_aabb = AABB(-0.001, -0.00835609, -1.69287, 0.002, 8.44542, 3.38575)
+process_material = SubResource("ParticleProcessMaterial_ut3ar")
+
+[node name="FootstepStreamer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_r5rtx")
+volume_db = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u8v57")
+}
+speed_scale = 2.0

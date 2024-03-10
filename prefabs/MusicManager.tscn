@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3283fco8oubd"]
+
+[ext_resource type="Script" path="res://scripts/Music Manager.gd" id="1_qk6kf"]
+[ext_resource type="AudioStream" uid="uid://dd2jld4fhtifu" path="res://sound/music/Good-Morning-Doctor-Weird.mp3" id="2_qekth"]
+[ext_resource type="AudioStream" uid="uid://bdgpdrna6kuvn" path="res://sound/music/Frantic-Gameplay1.mp3" id="3_nja8c"]
+[ext_resource type="AudioStream" uid="uid://b42f584jcieix" path="res://sound/music/Trancyvania.mp3" id="4_3d7jb"]
+
+[node name="Music Manager" type="AudioStreamPlayer"]
+volume_db = 1.0
+autoplay = true
+script = ExtResource("1_qk6kf")
+start_music = ExtResource("2_qekth")
+red_music = ExtResource("3_nja8c")
+green_music = ExtResource("2_qekth")
+blue_music = ExtResource("4_3d7jb")

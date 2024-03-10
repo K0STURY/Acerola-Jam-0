@@ -1,14 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://kyai603a2o1r"]
 
 [ext_resource type="Script" path="res://scripts/ColoredDoor.gd" id="1_ct2ei"]
-[ext_resource type="Shader" path="res://shaders/ColoredDoor.gdshader" id="2_psyxt"]
+[ext_resource type="Shader" path="res://shaders/CelWater.gdshader" id="2_nigxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6uss6"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_psyxt")
-shader_parameter/tint = Color(0, 0, 1, 1)
-shader_parameter/alpha = 1.0
+shader = ExtResource("2_nigxl")
+shader_parameter/WaveSpeed = 0.01
+shader_parameter/WaveIntensity = 0.2
+shader_parameter/WaveColor = Color(0.647059, 0.0431373, 0.498039, 1)
+shader_parameter/WaterColor = Color(1, 1, 1, 1)
+shader_parameter/FoamSize = 0.1
+shader_parameter/WaterOpacity = 0.9
 
 [sub_resource type="BoxMesh" id="BoxMesh_4qia7"]
 

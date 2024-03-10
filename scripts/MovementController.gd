@@ -23,8 +23,20 @@ var current_movement_penalty : float = 0.0
 @export var max_movement_penalty : float = 0.5
 @export var movement_lerp_speed : float = 5.0
 
+@export var walk_particles : GPUParticles3D
+@onready var animation_player := $AnimationPlayer
+@onready var audio_stream := $FootstepStreamer
+
+var isRunning : bool = false
+var inf_stamina : bool = true
+
+func _ready() -> void:
+	animation_player.play("idle")
+	pass
+
 func _process(delta: float) -> void:
 	_HandleInput()
+	_footstep_manager()
 	_run_manager(delta)
 
 func _physics_process(delta: float) -> void:
@@ -50,20 +62,36 @@ func _HandleInput() -> void:
 	direction = ($Neck.transform.basis * Vector3(movement_dir.x, 0, movement_dir.y)).normalized()
 	
 	isRequestingSprint = Input.is_action_pressed("Sprint")
+	walk_particles.emitting = direction.length()
+	
+	animation_player.speed_scale = 2.5 * movement_speed
+	
 
 func _run_manager(delta) -> void:
-	if isRequestingSprint and current_stamina > 0:
-		movement_speed = running_speed
-		$"Left Arm"._do_swing(delta, 1.4)
-		$"Right Arm"._do_swing(delta, 1.4)
-		$"Camera manager"._fov_manager(90)
-		current_stamina -= stamina_drain * delta
-	else:
+	if isRequestingSprint and (current_stamina > 0):
 		movement_speed = walking_speed
-		$"Left Arm"._do_swing(delta, .7)
-		$"Right Arm"._do_swing(delta, .7)
+		isRunning = true
+		$"Left Arm"._do_swing(.7)
+		$"Right Arm"._do_swing(.7)
 		$"Camera manager"._fov_manager(75)
-		if current_stamina < MAX_STAMINA and !isRequestingSprint:
-			current_stamina += stamina_gain * delta
+		#current_stamina -= stamina_drain * delta
+	else:
+		movement_speed = running_speed
+		isRunning = false
+		$"Left Arm"._do_swing(1.4)
+		$"Right Arm"._do_swing(1.4)
+		$"Camera manager"._fov_manager(90)
+		#if current_stamina < MAX_STAMINA and !isRequestingSprint:
+			#current_stamina += stamina_gain * delta
 	#print(current_stamina)
+	pass
+
+func _footstep_manager() -> void:
+
+	if direction.length():
+		var random_pitch = randf_range(0.5, 1.5)
+		audio_stream.pitch_scale = random_pitch
+		animation_player.play("moving")
+	else:
+		animation_player.play("idle")
 	pass

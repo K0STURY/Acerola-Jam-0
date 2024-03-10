@@ -31,7 +31,7 @@ func _do_sway(delta) -> void:
 	_holder.rotation.y = clamp(_holder.rotation.y, -_clamp_amount, _clamp_amount)
 	#_holder.rotation = clamp(_holder.rotation, -_clamp_amount, _clamp_amount)
 
-func _do_swing(delta, swings_peed)  -> void:
+func _do_swing( swings_peed)  -> void:
 	if $"..".direction:
 		var bob_z =  sin((Time.get_ticks_msec() * 0.005) * swing_frequency * swings_peed) * 0.1
 		var bob = Vector3(0, 0, bob_z)

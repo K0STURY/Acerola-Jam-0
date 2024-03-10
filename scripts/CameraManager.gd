@@ -39,9 +39,16 @@ func _fov_manager(desired_fov : float) -> void:
 	pass
 
 func _HandleBob(delta : float):
-		if $"..".direction:
-			var head_bob_y = abs(sin(Time.get_ticks_msec() * 0.005 * bob_amount) * $"..".movement_speed * 2) * 0.2 
-			var head_bob = Vector3(0, head_bob_y, 0.0)
-			camera.position = lerp(camera.position, head_init_pos + head_bob, delta * 5)
-		else:
-			camera.position = lerp(camera.position, head_init_pos, delta * 5)
+	
+	var walking_bob : float = 0.3
+	var running_bob : float = 3
+	
+	var bob_muplt : float = running_bob if (!$"..".isRunning) else walking_bob
+	
+	if $"..".direction:
+		var head_bob_y = abs(sin(Time.get_ticks_msec() * 0.005 * bob_amount) * bob_muplt) * 0.2 
+		var head_bob = Vector3(0, head_bob_y, 0.0)
+		camera.position = lerp(camera.position, head_init_pos + head_bob, delta * 5)
+	else:
+		camera.position = lerp(camera.position, head_init_pos, delta * 5)
+	

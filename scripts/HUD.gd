@@ -1,7 +1,10 @@
 extends CanvasLayer
 
 @onready var _state_visual := $"State Visual"
-@onready var _progress_bar := $ProgressBar
+@onready var _progress_bar := $TextureProgressBar
+
+const base_vignette : float = 0.69
+const tired_vignette : float = 8
 
 func _process(delta: float) -> void:
 	_state_manager()

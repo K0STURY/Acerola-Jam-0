@@ -1,10 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf5puvbpbdxey"]
+[gd_scene load_steps=6 format=3 uid="uid://cf5puvbpbdxey"]
 
-[ext_resource type="Texture2D" uid="uid://uyqucl0ssf3t" path="res://visuals/body-sharp-svgrepo-com(1).svg" id="1_dy2nn"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_uhrn2"]
+[ext_resource type="Texture2D" uid="uid://cdhg0lksuntdp" path="res://visuals/mouse-svgrepo-com.svg" id="3_6urh2"]
+[ext_resource type="Shader" path="res://shaders/Vignette.gdshader" id="3_16q17"]
+[ext_resource type="Texture2D" uid="uid://bo78b4k655ird" path="res://visuals/StaminaBar.svg" id="4_ntmb0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1acln"]
+shader = ExtResource("3_16q17")
+shader_parameter/vignette_intensity = 0.69
+shader_parameter/vignette_opacity = 0.237
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_uhrn2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Vignette" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_1acln")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="State Visual" type="TextureRect" parent="."]
 modulate = Color(0.431373, 0.431373, 0.431373, 1)
@@ -15,13 +43,29 @@ offset_bottom = 192.0
 scale = Vector2(0.52, 0.52)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_dy2nn")
+texture = ExtResource("3_6urh2")
 expand_mode = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = 39.0
 offset_top = 146.0
 offset_right = 213.45
 offset_bottom = 173.0
 size_flags_horizontal = 4
 value = 100.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = 34.0
+offset_top = 128.0
+offset_right = 600.0
+offset_bottom = 328.0
+scale = Vector2(0.319998, 0.319998)
+value = 100.0
+texture_under = ExtResource("4_ntmb0")
+texture_over = ExtResource("4_ntmb0")
+texture_progress = ExtResource("4_ntmb0")
+tint_under = Color(0.113725, 0.113725, 0.113725, 1)
+tint_over = Color(0.101961, 0.447059, 0.862745, 0)
+tint_progress = Color(0.52549, 0.52549, 0.52549, 1)

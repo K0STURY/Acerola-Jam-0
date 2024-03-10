@@ -25,7 +25,7 @@ shape = SubResource("BoxShape3D_qy8f5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.899982, 0)
+transform = Transform3D(1.18253, 0, 0, 0, 1.18253, 0, 0, 0, 1.18253, 0, 0.899982, 0)
 material_override = SubResource("StandardMaterial3D_y631f")
 mesh = SubResource("SphereMesh_8qicq")
 
