@@ -1,18 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6j47tyyq3ej6"]
+[gd_scene load_steps=11 format=3 uid="uid://c6j47tyyq3ej6"]
 
 [ext_resource type="Script" path="res://scripts/ColorChanger.gd" id="1_00rn8"]
-[ext_resource type="Texture2D" uid="uid://dc5devi6kg7d5" path="res://icon.svg" id="2_atwro"]
+[ext_resource type="PackedScene" uid="uid://ngfkpakkha1f" path="res://prefabs/walk_particles.tscn" id="3_ddtw3"]
+[ext_resource type="Texture2D" uid="uid://cp75ld3dacixu" path="res://visuals/Drain.png" id="3_gbwai"]
+[ext_resource type="PackedScene" uid="uid://c3ivl2v23urc3" path="res://mesh/Pipe.glb" id="5_8t0ne"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qy8f5"]
-size = Vector3(1.76587, 1.72559, 1.72559)
+size = Vector3(1, 1.72559, 1.20313)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y631f"]
+[sub_resource type="Curve" id="Curve_4rphu"]
+_data = [Vector2(0, 1), 0.0, -0.045, 0, 0, Vector2(1, 0), -2.365, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j10x8"]
+curve = SubResource("Curve_4rphu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_so7n8"]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape_offset = Vector3(0, 2, 0)
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 90, 0)
+gravity = Vector3(0, -1, 0)
+scale_min = 0.0
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_j10x8")
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 5.0
+turbulence_noise_speed = Vector3(0, 0, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahwld"]
 resource_local_to_scene = true
 shading_mode = 0
 diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0, 0, 1, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_8qicq"]
+[sub_resource type="SphereMesh" id="SphereMesh_snr33"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ahwld")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
 
 [node name="Color Changer" type="Area3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -23,14 +57,25 @@ color = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862793, 0)
 shape = SubResource("BoxShape3D_qy8f5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1.18253, 0, 0, 0, 1.18253, 0, 0, 0, 1.18253, 0, 0.899982, 0)
-material_override = SubResource("StandardMaterial3D_y631f")
-mesh = SubResource("SphereMesh_8qicq")
+[node name="Drain" type="Sprite3D" parent="."]
+transform = Transform3D(0.075, 0, 0, 0, -3.27835e-09, 0.075, 0, -0.075, -3.27835e-09, 0, 0.00253773, 0)
+modulate = Color(0.47451, 0.47451, 0.47451, 1)
+texture = ExtResource("3_gbwai")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1.25, 0, 0, 0, -5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0.001, 0)
-texture = ExtResource("2_atwro")
+[node name="Paint Particles" parent="." instance=ExtResource("3_ddtw3")]
+transform = Transform3D(0.287, 0, 0, 0, 0.877, 0, 0, 0, 0.572, 0, -0.0648658, 0)
+emitting = true
+amount = 200
+lifetime = 1.2
+visibility_aabb = AABB(-0.874304, -0.235569, -0.482258, 1.74861, 2.33613, 0.964516)
+process_material = SubResource("ParticleProcessMaterial_so7n8")
+draw_pass_1 = SubResource("SphereMesh_snr33")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Paint Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0791133, 0)
+size = Vector3(2, 0.001, 2)
+
+[node name="Pipe" parent="." instance=ExtResource("5_8t0ne")]
+transform = Transform3D(0.73, 0, 0, 0, 0.73, 0, 0, 0, 0.73, 0, 1.90237, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

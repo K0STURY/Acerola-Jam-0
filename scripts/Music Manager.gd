@@ -17,14 +17,12 @@ func _process(delta: float) -> void:
 func _musicSelector() -> void:
 	if GameManager.CURRENT_STATE == GameManager.STATES.RED and stream != red_music:
 		stream = red_music
-		print("Playing Red")
 	if GameManager.CURRENT_STATE == GameManager.STATES.GREEN and stream != green_music:
 		stream = green_music
-		print("Playing Green")
 	if GameManager.CURRENT_STATE == GameManager.STATES.BLUE and stream != blue_music:
 		stream = blue_music
-		print("Playing Blue")
-		
+	if GameManager.CURRENT_STATE == GameManager.STATES.NONE and stream != start_music:
+		stream = start_music
 	if !playing:
 		play()
 	pass

@@ -6,8 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://b42f584jcieix" path="res://sound/music/Trancyvania.mp3" id="4_3d7jb"]
 
 [node name="Music Manager" type="AudioStreamPlayer"]
+process_mode = 3
 volume_db = 1.0
 autoplay = true
+mix_target = 2
+max_polyphony = 2
+bus = &"Music"
 script = ExtResource("1_qk6kf")
 start_music = ExtResource("2_qekth")
 red_music = ExtResource("3_nja8c")

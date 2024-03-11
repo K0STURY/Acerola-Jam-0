@@ -13,4 +13,16 @@ res://prefabs/ColoredDoor.tscn
 res://prefabs/ColorChanger.tscn
 res://prefabs/walk_particles.tscn
 res://prefabs/MusicManager.tscn
+res://scripts/ColorChanger.gd
+res://materials/Pipe.tres
+res://default_bus_layout.tres
+res://prefabs/PauseMenu.tscn
+res://scripts/PauseMenu.gd
+res://scripts/Audio Settings.gd
+res://recources/audio_bus_layout.tres
+res://scenes/MainMenu.tscn
+res://shaders/ScrollMat.gdshader
+res://recources/UI.tres
+res://scripts/MainMenu.gd
+res://materials/ScrollingTiles.tres
 res://scripts/Music Manager.gd

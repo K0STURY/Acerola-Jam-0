@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dueflda0qac1r"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_smqfr"]
+[ext_resource type="Material" uid="uid://f44jjivtv1yw" path="res://materials/ScrollingTiles.tres" id="2_55fjt"]
+[ext_resource type="Texture2D" uid="uid://yc6qvrqf7yxj" path="res://Itch Page/Pattern.png" id="2_qxxyf"]
+[ext_resource type="Texture2D" uid="uid://c8l72grkfx16u" path="res://Itch Page/Atui.png" id="3_itbtq"]
+[ext_resource type="Theme" uid="uid://dymkmd6g8tvih" path="res://recources/UI.tres" id="4_8ggs5"]
+[ext_resource type="Texture2D" uid="uid://jue6p2k3mmkt" path="res://Itch Page/Title.png" id="5_fc2rv"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_smqfr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Texture" type="TextureRect" parent="Control"]
+material = ExtResource("2_55fjt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qxxyf")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Auti" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 301.0
+offset_right = 1262.0
+offset_bottom = 813.0
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("3_itbtq")
+
+[node name="Auti2" type="TextureRect" parent="Control"]
+layout_mode = 1
+offset_left = 34.0
+offset_top = 36.0
+offset_right = 546.0
+offset_bottom = 548.0
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("5_fc2rv")
+
+[node name="Play Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 48.0
+offset_right = 32.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.72, 1.72)
+theme = ExtResource("4_8ggs5")
+text = "   PLAY   "
+
+[node name="Quit Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 101.5
+offset_right = 32.0
+offset_bottom = 124.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.72, 1.72)
+theme = ExtResource("4_8ggs5")
+text = "   QUIT   "
+
+[connection signal="pressed" from="Control/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/Quit Button" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://f44jjivtv1yw"]
+
+[ext_resource type="Shader" path="res://shaders/ScrollMat.gdshader" id="1_d5nyh"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_d5nyh")
+shader_parameter/scrollDireciton = Vector2(-0.5, -0.5)
+shader_parameter/scale = 2.0
+shader_parameter/opacity = 1.0

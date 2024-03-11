@@ -1,13 +1,21 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1710101758
-export_presets.cfg::TextFile::-1::1709940315::0::1::::<><>::
+::res://::1710195049
+export_presets.cfg::TextFile::-1::1710105730::0::1::::<><>::
 icon.svg::CompressedTexture2D::7361761481902002996::1709223568::1709749317::1::::<><>::
-::res://materials/::1710086499
+::res://Itch Page/::1710197443
+Atui.png::CompressedTexture2D::7113772864803634338::1710196212::1710196219::1::::<><>::
+Button.png::CompressedTexture2D::4361208764537113406::1710196387::1710196389::1::::<><>::
+Cover.png::CompressedTexture2D::7435081098694964679::1710195055::1710195056::1::::<><>::
+Pattern.png::CompressedTexture2D::1690572932286098311::1710195737::1710195741::1::::<><>::
+Title.png::CompressedTexture2D::673286205457833527::1710197443::1710197446::1::::<><>::
+::res://materials/::1710189187
 Door.tres::StandardMaterial3D::2497900022019007991::1710010171::0::1::::<><>::uid://d2fug35rsdvmk::::res://visuals/Gridbox.png
-Gridbox.tres::StandardMaterial3D::5520547528097062301::1710086499::0::1::::<><>::uid://d2fug35rsdvmk::::res://visuals/Gridbox.png
-WallBox.tres::StandardMaterial3D::6319472550755337548::1710086499::0::1::::<><>::uid://d2fug35rsdvmk::::res://visuals/Gridbox.png
-::res://mesh/::1710087011
+Gridbox.tres::StandardMaterial3D::5520547528097062301::1710183524::0::1::::<><>::uid://d2fug35rsdvmk::::res://visuals/Gridbox.png
+Pipe.tres::StandardMaterial3D::1488225106173742046::1710189187::0::1::::<><>::
+WallBox.tres::StandardMaterial3D::6319472550755337548::1710183524::0::1::::<><>::uid://d2fug35rsdvmk::::res://visuals/Gridbox.png
+::res://mesh/::1710189067
 Maze.glb::PackedScene::7362673688498067135::1710017922::1710017923::1::::<><>::uid://ckwgu1tu4rfwf::::res://materials/Gridbox.tres<>uid://cwbg132ntq4rg::::res://materials/WallBox.tres
+Pipe.glb::PackedScene::6755940163700962980::1710188836::1710189067::1::::<><>::uid://vg535xafroly::::res://materials/Pipe.tres
 ::res://mesh/Kenney Food/::1710089318
 apple.glb::PackedScene::2693563347291617147::1654180463::1710087068::1::::<><>::
 appleHalf.glb::PackedScene::7924350159815362492::1654180463::1710087069::1::::<><>::
@@ -209,53 +217,63 @@ wholeHam.glb::PackedScene::5592069278683713219::1654180477::1710087060::1::::<><
 wholerHam.glb::PackedScene::8180835998057600683::1654180477::1710087061::1::::<><>::
 wineRed.glb::PackedScene::7724431480736689730::1654180477::1710087061::1::::<><>::
 wineWhite.glb::PackedScene::1544612272129604150::1654180477::1710087061::1::::<><>::
-::res://prefabs/::1710101535
-ColorChanger.tscn::PackedScene::6969093894278823873::1710101504::0::1::::<><>::res://scripts/ColorChanger.gd<>uid://dc5devi6kg7d5::::res://icon.svg
-ColoredDoor.tscn::PackedScene::751449456946232661::1710101504::0::1::::<><>::res://scripts/ColoredDoor.gd<>res://shaders/CelWater.gdshader
+::res://prefabs/::1710196862
+ColorChanger.tscn::PackedScene::6969093894278823873::1710196590::0::1::::<><>::res://scripts/ColorChanger.gd<>uid://ngfkpakkha1f::::res://prefabs/walk_particles.tscn<>uid://cp75ld3dacixu::::res://visuals/Drain.png<>uid://c3ivl2v23urc3::::res://mesh/Pipe.glb
+ColoredDoor.tscn::PackedScene::751449456946232661::1710196590::0::1::::<><>::res://scripts/ColoredDoor.gd<>res://shaders/CelWater.gdshader
 DoorSwitch.tscn::PackedScene::2835628706200003021::1710027651::0::1::::<><>::res://scripts/DoorSwitch.gd
-HUD.tscn::PackedScene::5186664494185921988::1710101504::0::1::::<><>::res://scripts/HUD.gd<>uid://cdhg0lksuntdp::::res://visuals/mouse-svgrepo-com.svg<>res://shaders/Vignette.gdshader<>uid://bo78b4k655ird::::res://visuals/StaminaBar.svg
-MusicManager.tscn::PackedScene::4409500434295380149::1710101504::0::1::::<><>::res://scripts/Music Manager.gd<>uid://dd2jld4fhtifu::::res://sound/music/Good-Morning-Doctor-Weird.mp3<>uid://bdgpdrna6kuvn::::res://sound/music/Frantic-Gameplay1.mp3<>uid://b42f584jcieix::::res://sound/music/Trancyvania.mp3
+HUD.tscn::PackedScene::5186664494185921988::1710196590::0::1::::<><>::res://scripts/HUD.gd<>uid://cdhg0lksuntdp::::res://visuals/mouse-svgrepo-com.svg<>res://shaders/Vignette.gdshader<>uid://bo78b4k655ird::::res://visuals/StaminaBar.svg
+MusicManager.tscn::PackedScene::4409500434295380149::1710196590::0::1::::<><>::res://scripts/Music Manager.gd<>uid://dd2jld4fhtifu::::res://sound/music/Good-Morning-Doctor-Weird.mp3<>uid://bdgpdrna6kuvn::::res://sound/music/Frantic-Gameplay1.mp3<>uid://b42f584jcieix::::res://sound/music/Trancyvania.mp3
 OpenableDoor.tscn::PackedScene::6088682728736079801::1710027712::0::1::::<><>::res://scripts/OpenableDoor.gd<>uid://bbuabv75tf1dr::::res://materials/Door.tres
-Player.tscn::PackedScene::8454683125731169419::1710101535::0::1::::<><>::res://scripts/MovementController.gd<>uid://bpoy352wnrvr6::::res://visuals/Arm.png<>res://scripts/Swinger.gd<>res://scripts/CameraManager.gd<>res://shaders/ViewModel.gdshader<>uid://cydxs77stccp0::::res://visuals/Arm.svg<>uid://cf5puvbpbdxey::::res://prefabs/HUD.tscn<>uid://ngfkpakkha1f::::res://prefabs/walk_particles.tscn<>uid://bovdtngd7srx4::::res://sound/footstep_sound.mp3
-walk_particles.tscn::PackedScene::925163465039906705::1710101504::0::1::::<><>::
-::res://scenes/::1710101746
-maze.tscn::PackedScene::1527561841945295719::1710101746::0::1::::<><>::uid://dc5sfo5wiheyh::::res://mesh/Maze.glb<>uid://cwbg132ntq4rg::::res://materials/WallBox.tres<>uid://dsprnpt7clqat::::res://prefabs/Player.tscn<>uid://7pxvg5jtdc2u::::res://visuals/skyfloyd.png<>uid://c6j47tyyq3ej6::::res://prefabs/ColorChanger.tscn<>uid://kyai603a2o1r::::res://prefabs/ColoredDoor.tscn<>uid://b3283fco8oubd::::res://prefabs/MusicManager.tscn
+Player.tscn::PackedScene::8454683125731169419::1710196590::0::1::::<><>::res://scripts/MovementController.gd<>uid://bpoy352wnrvr6::::res://visuals/Arm.png<>res://scripts/Swinger.gd<>res://scripts/CameraManager.gd<>res://shaders/ViewModel.gdshader<>uid://cydxs77stccp0::::res://visuals/Arm.svg<>uid://cf5puvbpbdxey::::res://prefabs/HUD.tscn<>uid://ngfkpakkha1f::::res://prefabs/walk_particles.tscn<>uid://bovdtngd7srx4::::res://sound/footstep_sound.mp3
+PauseMenu.tscn::PackedScene::5470878522946604413::1710196862::0::1::::<><>::res://scripts/PauseMenu.gd<>uid://sxu57wl4a7hi::::res://recources/audio_bus_layout.tres<>res://scripts/Audio Settings.gd<>uid://dymkmd6g8tvih::::res://recources/UI.tres
+walk_particles.tscn::PackedScene::925163465039906705::1710187651::0::1::::<><>::
+::res://recources/::1710196862
+audio_bus_layout.tres::AudioBusLayout::1312149502771916326::1710192684::0::1::::<><>::
+UI.tres::Theme::8869195636671791379::1710196862::0::1::::<><>::uid://dc5devi6kg7d5::::res://icon.svg
+::res://scenes/::1710196955
+maze.tscn::PackedScene::1527561841945295719::1710196590::0::1::::<><>::uid://dc5sfo5wiheyh::::res://mesh/Maze.glb<>uid://cwbg132ntq4rg::::res://materials/WallBox.tres<>uid://dsprnpt7clqat::::res://prefabs/Player.tscn<>uid://7pxvg5jtdc2u::::res://visuals/skyfloyd.png<>uid://c6j47tyyq3ej6::::res://prefabs/ColorChanger.tscn<>uid://kyai603a2o1r::::res://prefabs/ColoredDoor.tscn<>uid://cj7etm5ago6yb::::res://prefabs/PauseMenu.tscn
+MainMenu.tscn::PackedScene::8571619822280296749::1710196955::0::1::::<><>::res://shaders/ScrollMat.gdshader<>uid://yc6qvrqf7yxj::::res://Itch Page/Pattern.png<>uid://c8l72grkfx16u::::res://Itch Page/Atui.png<>uid://dymkmd6g8tvih::::res://recources/UI.tres
 World.tscn::PackedScene::6399587772208133417::1709927263::0::1::::<><>::uid://ckwgu1tu4rfwf::::res://materials/Gridbox.tres<>uid://dsprnpt7clqat::::res://prefabs/Player.tscn
-::res://scripts/::1710101489
+::res://scripts/::1710196984
 CameraManager.gd::GDScript::-1::1710096011::0::1::::<>Node<>::
-ColorChanger.gd::GDScript::-1::1710015714::0::1::::<>Area3D<>::
+ColorChanger.gd::GDScript::-1::1710189454::0::1::::<>Area3D<>::
 ColoredDoor.gd::GDScript::-1::1710017656::0::1::::<>StaticBody3D<>::
 DoorSwitch.gd::GDScript::-1::1709946186::0::1::::<>Area3D<>::
 GameManager.gd::GDScript::-1::1709924410::0::1::::<>Node<>::
 HUD.gd::GDScript::-1::1710087923::0::1::::<>CanvasLayer<>::
-MovementController.gd::GDScript::-1::1710095983::0::1::::<>CharacterBody3D<>::
-Music Manager.gd::GDScript::-1::1710101489::0::1::::<>AudioStreamPlayer2D<>::
+MovementController.gd::GDScript::-1::1710183524::0::1::::<>CharacterBody3D<>::
+Music Manager.gd::GDScript::-1::1710105282::0::1::::<>AudioStreamPlayer<>::
 OpenableDoor.gd::GDScript::-1::1709946125::0::1::::<>StaticBody3D<>::
+PauseMenu.gd::GDScript::-1::1710193413::0::1::::<>CanvasLayer<>::
+Audio Settings.gd::GDScript::-1::1710193289::0::1::::<>Node<>::
+MainMenu.gd::GDScript::-1::1710196984::0::1::::<>CanvasLayer<>::
 Swinger.gd::GDScript::-1::1710018115::0::1::::<>Node<>::
-::res://shaders/::1710101747
-CelWater.gdshader::Shader::-1::1710101747::0::1::::<><>::
-ColoredDoor.gdshader::Shader::-1::1710101747::0::1::::<><>::
-ViewModel.gdshader::Shader::-1::1710101747::0::1::::<><>::
-Vignette.gdshader::Shader::-1::1710101747::0::1::::<><>::
-Water.tres::VisualShader::7869137577012658145::1710086499::0::1::::<><>::
-::res://sound/::1710100021
-footstep_sound.mp3::AudioStreamMP3::3412633200775477471::1710091799::1710091859::1::::<><>::
+::res://shaders/::1710196955
+CelWater.gdshader::Shader::-1::1710196955::0::1::::<><>::
+ColoredDoor.gdshader::Shader::-1::1710196955::0::1::::<><>::
+ScrollMat.gdshader::Shader::-1::1710196955::0::1::::<><>::
+ViewModel.gdshader::Shader::-1::1710196955::0::1::::<><>::
+Vignette.gdshader::Shader::-1::1710196955::0::1::::<><>::
+Water.tres::VisualShader::7869137577012658145::1710183524::0::1::::<><>::
+::res://sound/::1710102161
+footstep_sound.mp3::AudioStreamMP3::3412633200775477471::1710091799::1710102161::1::::<><>::
 ::res://sound/music/::1710100124
 Frantic-Gameplay1.mp3::AudioStreamMP3::2610290506426021671::1710100011::1710100118::1::::<><>::
 Good-Morning-Doctor-Weird.mp3::AudioStreamMP3::7426133080627532486::1710100008::1710100121::1::::<><>::
 Trancyvania.mp3::AudioStreamMP3::4477994285818426999::1710100010::1710100124::1::::<><>::
-::res://visuals/::1710095406
+::res://visuals/::1710188616
 Arm.png::CompressedTexture2D::3469663455304024205::1710095403::1710095406::1::::<><>::
 Arm.svg::CompressedTexture2D::6464997114109330847::1710088419::1710088437::1::::<><>::
 body-sharp-svgrepo-com(1).svg::CompressedTexture2D::1454329249820646383::1709922852::1709922882::1::::<><>::
 brochette-svgrepo-com.svg::CompressedTexture2D::1044177228372343687::1710087442::1710087525::1::::<><>::
+Drain.png::CompressedTexture2D::5893575464563517490::1710188615::1710188616::1::::<><>::
 Gridbox.png::CompressedTexture2D::9065909290489770446::1706649449::1709230124::1::::<><>::
 lantern.png::CompressedTexture2D::3569484492121289982::1709655755::1709655768::1::::<><>::
 mouse-svgrepo-com.svg::CompressedTexture2D::4998268083432932009::1710087469::1710087525::1::::<><>::
 skyfloyd.png::CompressedTexture2D::2278443017152228122::1706657559::1709240103::1::::<><>::
 StaminaBar.svg::CompressedTexture2D::3437131569385640981::1710087817::1710087818::1::::<><>::
 TestAssets.png::CompressedTexture2D::7544852301230379369::1709227048::1709227239::1::::<><>::
-::res://visuals/Posters/::1710028474
+::res://visuals/Posters/::1710197400
 Alda.png::CompressedTexture2D::3466383223931045738::1710026070::1710026146::1::::<><>::
 AshfidPoster.png::CompressedTexture2D::5699775081804226053::1710021668::1710021704::1::::<><>::
 Fire.png::CompressedTexture2D::4713840640519351159::1710026055::1710026329::1::::<><>::
