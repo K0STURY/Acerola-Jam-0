@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf5puvbpbdxey"]
+[gd_scene load_steps=9 format=3 uid="uid://cf5puvbpbdxey"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_uhrn2"]
 [ext_resource type="Texture2D" uid="uid://cdhg0lksuntdp" path="res://visuals/mouse-svgrepo-com.svg" id="3_6urh2"]
 [ext_resource type="Shader" path="res://shaders/Vignette.gdshader" id="3_16q17"]
+[ext_resource type="Texture2D" uid="uid://btltjedq1marm" path="res://visuals/ColorWatch.png" id="3_21s56"]
 [ext_resource type="Texture2D" uid="uid://bo78b4k655ird" path="res://visuals/StaminaBar.svg" id="4_ntmb0"]
+[ext_resource type="Material" uid="uid://f44jjivtv1yw" path="res://materials/ScrollingTiles.tres" id="6_p7kss"]
+[ext_resource type="Texture2D" uid="uid://yc6qvrqf7yxj" path="res://Itch Page/Pattern.png" id="7_yvc8h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1acln"]
 shader = ExtResource("3_16q17")
@@ -13,6 +16,46 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_uhrn2")
+
+[node name="Win Screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Win Screen"]
+material = ExtResource("6_p7kss")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_yvc8h")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Win Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -27.0
+offset_right = -55.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.111739
+scale = Vector2(4.6, 4.6)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+text = "VICTORY!"
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -34,7 +77,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="State Visual" type="TextureRect" parent="."]
+[node name="Watch" type="TextureRect" parent="."]
+modulate = Color(0.431373, 0.431373, 0.431373, 1)
+offset_left = 41.0
+offset_top = 18.0
+offset_right = 175.0
+offset_bottom = 152.0
+scale = Vector2(1.16, 1.16)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_21s56")
+expand_mode = 1
+
+[node name="Rat" type="TextureRect" parent="."]
 modulate = Color(0.431373, 0.431373, 0.431373, 1)
 offset_left = 84.0
 offset_top = 58.0
@@ -69,3 +124,16 @@ texture_progress = ExtResource("4_ntmb0")
 tint_under = Color(0.113725, 0.113725, 0.113725, 1)
 tint_over = Color(0.101961, 0.447059, 0.862745, 0)
 tint_progress = Color(0.52549, 0.52549, 0.52549, 1)
+
+[node name="Stopwatch" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 23.0
+offset_right = -73.0
+offset_bottom = 46.0
+grow_horizontal = 0
+scale = Vector2(1.64, 1.64)
+text = "00:00:00"
+horizontal_alignment = 2

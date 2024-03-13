@@ -1,15 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgnunjoh8hca4"]
+[gd_scene load_steps=5 format=3 uid="uid://bgnunjoh8hca4"]
 
 [ext_resource type="Script" path="res://scripts/DoorSwitch.gd" id="1_6aa2v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jlhex"]
 size = Vector3(1, 1.25708, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_p4hef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgbmu"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.235294, 0.45098, 0.203922, 1)
+
 [node name="Switch" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_6aa2v")
+closed_color = Color(0.721569, 0, 0.294118, 1)
+open_color = Color(0.235294, 0.45098, 0.203922, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.624146, 0)
 shape = SubResource("BoxShape3D_jlhex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.22029, 0, 0, 0, 0.398058, 0, 0, 0, 0.415709, 0, 0.561866, 0)
+mesh = SubResource("BoxMesh_p4hef")
+
+[node name="Button" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1.44831, 0, 0, 0, 0.715085, 0, 0, 0, 0.548082, 0.0204041, 0.0118256, 0)
+material_override = SubResource("StandardMaterial3D_kgbmu")
+mesh = SubResource("BoxMesh_p4hef")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

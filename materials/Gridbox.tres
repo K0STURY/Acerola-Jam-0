@@ -1,13 +1,13 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ckwgu1tu4rfwf"]
 
-[ext_resource type="Texture2D" uid="uid://d2fug35rsdvmk" path="res://visuals/Gridbox.png" id="1_bmebg"]
+[ext_resource type="Texture2D" uid="uid://bsify4w7f6eba" path="res://visuals/Checker.png" id="1_nymbm"]
 
 [resource]
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.670588, 0.298039, 0, 1)
-albedo_texture = ExtResource("1_bmebg")
+albedo_texture = ExtResource("1_nymbm")
 uv1_scale = Vector3(5, 5, 5)
 uv1_triplanar = true
 uv1_world_triplanar = true

@@ -115,9 +115,9 @@ offset_right = 205.0
 offset_bottom = 102.0
 grow_horizontal = 0
 grow_vertical = 2
-min_value = -45.0
-max_value = -8.0
-value = -8.0
+min_value = -30.0
+max_value = -4.0
+value = -4.0
 
 [node name="SFX Vol" type="Label" parent="Control/Audio Settings"]
 anchors_preset = 6
@@ -145,9 +145,9 @@ offset_right = 205.0
 offset_bottom = 172.0
 grow_horizontal = 0
 grow_vertical = 2
-min_value = -45.0
-max_value = -8.0
-value = -8.0
+min_value = -30.0
+max_value = -4.0
+value = -4.0
 
 [node name="Music Vol" type="Label" parent="Control/Audio Settings"]
 anchors_preset = 6
@@ -175,9 +175,9 @@ offset_right = 205.0
 offset_bottom = 243.0
 grow_horizontal = 0
 grow_vertical = 2
-min_value = -45.0
-max_value = -8.0
-value = -8.0
+min_value = -30.0
+max_value = -4.0
+value = -4.0
 
 [connection signal="pressed" from="Control/Resume" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]

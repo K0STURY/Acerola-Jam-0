@@ -1,14 +1,25 @@
 extends CanvasLayer
 
-@onready var _state_visual := $"State Visual"
+@onready var _state_visual := $"Rat"
 @onready var _progress_bar := $TextureProgressBar
+@onready var _stopwatch_visual := $Stopwatch
 
 const base_vignette : float = 0.69
 const tired_vignette : float = 8
 
+var time : float
+var milliseconds : float
+var seconds : float
+var minutes: float
+
 func _process(delta: float) -> void:
 	_state_manager()
+	_stopwatch(delta)
 	_progress_bar.value = $"..".current_stamina
+	
+	if GameManager.FINISHED:
+		$"Win Screen".visible = true
+	
 	pass
 
 func _state_manager() -> void:
@@ -24,3 +35,13 @@ func _state_manager() -> void:
 
 func _update_state(state : GameManager.STATES):
 	GameManager.CURRENT_STATE = state
+
+func _stopwatch(delta) -> void:
+	if !get_tree().paused and !GameManager.FINISHED:
+		time += delta
+		milliseconds = fmod(time, 1) * 100
+		seconds = fmod(time, 60)
+		minutes = time / 60
+	var time_string := "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
+	_stopwatch_visual.text = time_string
+	pass

@@ -5,10 +5,10 @@
 [resource]
 shading_mode = 0
 specular_mode = 1
-albedo_color = Color(0.317647, 0.482353, 0, 1)
+albedo_color = Color(0.0666667, 0.054902, 0.0784314, 1)
 albedo_texture = ExtResource("1_0agky")
 refraction_scale = -0.31
-uv1_scale = Vector3(5, 5, 5)
+uv1_scale = Vector3(13, 0.3, 13)
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 2

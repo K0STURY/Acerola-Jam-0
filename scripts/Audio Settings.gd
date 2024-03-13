@@ -4,6 +4,7 @@ extends Node
 
 func _ready() -> void:
 	AudioServer.set_bus_layout(audio_bus)
+	
 
 func _on_master_slider_value_changed(value: float) -> void:
 	#audio_bus.set_bus_volume_db(0, value)
