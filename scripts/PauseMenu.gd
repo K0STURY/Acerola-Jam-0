@@ -32,3 +32,9 @@ func _on_button_pressed() -> void:
 func _on_quit_pressed() -> void:
 	_quit()
 	pass # Replace with function body.
+
+
+
+func _on_line_edit_text_submitted(new_text) -> void:
+	GameManager.mouse_sense = new_text
+	pass # Replace with function body.

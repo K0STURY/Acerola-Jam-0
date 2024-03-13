@@ -19,6 +19,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	MOUSE_SENSITIVITY = GameManager.mouse_sense
 	if do_bob:
 		_HandleBob(delta)
 	

@@ -15,7 +15,7 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_j10x8"]
 curve = SubResource("Curve_4rphu")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wf203"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j5gaj"]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape_offset = Vector3(0, 2, 0)
@@ -33,16 +33,16 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nectf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swqp3"]
 resource_local_to_scene = true
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0, 0, 1, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_okviv"]
+[sub_resource type="SphereMesh" id="SphereMesh_nv18d"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_nectf")
+material = SubResource("StandardMaterial3D_swqp3")
 radius = 0.1
 height = 0.2
 radial_segments = 8
@@ -68,8 +68,8 @@ emitting = true
 amount = 200
 lifetime = 1.2
 visibility_aabb = AABB(-0.874304, -0.235569, -0.482258, 1.74861, 2.33613, 0.964516)
-process_material = SubResource("ParticleProcessMaterial_wf203")
-draw_pass_1 = SubResource("SphereMesh_okviv")
+process_material = SubResource("ParticleProcessMaterial_j5gaj")
+draw_pass_1 = SubResource("SphereMesh_nv18d")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Paint Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0791133, 0)
